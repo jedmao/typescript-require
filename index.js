@@ -53,8 +53,8 @@ function compileTS (module) {
     "--nolib",
     "--target",
     options.targetES5 ? "ES5" : "ES3", !! options.moduleKind ? "--module" : "", !! options.moduleKind ? options.moduleKind : "",
-    "--outDir",
-    tmpDir,
+    "--out",
+    jsname,
     libdts,
     options.nodeLib ? path.resolve(__dirname, "typings/node.d.ts") : null,
     module.filename
