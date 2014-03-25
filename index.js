@@ -1,6 +1,7 @@
 var vm = require('vm');
 var fs = require('fs');
 var path = require('path');
+var os = require('os');
 
 var tsc = require.resolve("typescript").replace(/typescript\.js$/, "tsc.js");
 var libdts = tsc.replace(/tsc\.js$/, "lib.d.ts");
@@ -40,7 +41,7 @@ function isModified(tsname, jsname) {
  */
 function compileTS (module) {
   var exitCode = 0;
-  var tmpDir = path.join(process.cwd(), "tmp", "tsreq");
+  var tmpDir = path.join(os.tmpdir(), "tsreq");
   var jsname = path.join(tmpDir, path.basename(module.filename, ".ts") + ".js");
 
   if (!isModified(module.filename, jsname)) {
